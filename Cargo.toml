@@ -3,6 +3,6 @@ name = "xenia"
 version = "0.1.0"
 edition = "2021"
 description = "xenia"
-license = "MIT"
+license = "Apache-2.0 WITH LLVM-exception"
 
 [dependencies]
