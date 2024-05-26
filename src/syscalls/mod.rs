@@ -1,5 +1,11 @@
 use core::arch::asm;
 
+mod exit_group;
+mod uname;
+
+pub use exit_group::*;
+pub use uname::*;
+
 #[inline]
 pub unsafe fn syscall0_readonly(nr: usize) -> usize {
     let ret;
