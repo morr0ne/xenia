@@ -1,8 +1,10 @@
 use core::arch::asm;
 
+mod close;
 mod exit_group;
 mod uname;
 
+pub use close::*;
 pub use exit_group::*;
 pub use uname::*;
 
