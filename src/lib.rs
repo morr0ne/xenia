@@ -6,6 +6,7 @@ mod errno;
 mod syscalls;
 
 pub mod fd;
+pub mod stdio;
 
-pub use errno::Errno;
+pub use errno::*;
 pub use syscalls::*;

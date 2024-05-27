@@ -1,12 +1,28 @@
 use core::arch::asm;
 
+mod chdir;
+mod chroot;
 mod close;
+mod execve;
 mod exit_group;
+mod getpid;
+mod mkdir;
+mod mount;
+mod stat;
 mod uname;
+mod write;
 
+pub use chdir::*;
+pub use chroot::*;
 pub use close::*;
+pub use execve::*;
 pub use exit_group::*;
+pub use getpid::*;
+pub use mkdir::*;
+pub use mount::*;
+pub use stat::*;
 pub use uname::*;
+pub use write::*;
 
 #[inline]
 pub unsafe fn syscall0_readonly(nr: usize) -> usize {

@@ -4,6 +4,7 @@ use linux_raw_sys::{general::__NR_uname, system::new_utsname};
 
 use crate::syscall1;
 
+#[repr(transparent)]
 pub struct Uname {
     raw: new_utsname,
 }
@@ -38,6 +39,7 @@ impl Uname {
     }
 }
 
+#[inline]
 pub fn uname() -> Uname {
     let mut uname = MaybeUninit::<new_utsname>::uninit();
 
