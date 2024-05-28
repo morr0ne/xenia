@@ -1,13 +1,11 @@
 use core::ffi::CStr;
 
-use linux_raw_sys::general::__NR_chroot;
-
-use crate::{syscall1_readonly, Result};
+use crate::{syscall1_readonly, Result, Syscall};
 
 pub fn chroot(path: &CStr) -> Result<()> {
     // FIXME
     unsafe {
-        syscall1_readonly(__NR_chroot as usize, path);
+        syscall1_readonly(Syscall::CHROOT, path);
     }
     Ok(())
 }

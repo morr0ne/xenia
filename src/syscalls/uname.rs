@@ -1,8 +1,8 @@
 use core::{ffi::CStr, mem::MaybeUninit};
 
-use linux_raw_sys::{general::__NR_uname, system::new_utsname};
+use linux_raw_sys::system::new_utsname;
 
-use crate::syscall1;
+use crate::{syscall1, Syscall};
 
 #[repr(transparent)]
 pub struct Uname {
@@ -44,7 +44,7 @@ pub fn uname() -> Uname {
     let uname = MaybeUninit::<new_utsname>::uninit();
 
     unsafe {
-        syscall1(__NR_uname as usize, uname);
+        syscall1(Syscall::UNAME, uname);
         Uname::from_raw(uname.assume_init())
     }
 }

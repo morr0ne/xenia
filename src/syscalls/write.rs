@@ -1,10 +1,8 @@
-use linux_raw_sys::general::__NR_write;
-
-use crate::{fd::AsRawFd, syscall3_readonly, Result};
+use crate::{fd::AsRawFd, syscall3_readonly, Result, Syscall};
 
 #[inline]
 pub fn write<Fd: AsRawFd>(fd: Fd, buf: &[u8]) -> Result<usize> {
-    let res = unsafe { syscall3_readonly(__NR_write as usize, fd, buf, buf.len()) };
+    let res = unsafe { syscall3_readonly(Syscall::WRITE, fd, buf, buf.len()) };
 
     Ok(res)
 }

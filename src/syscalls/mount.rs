@@ -1,8 +1,7 @@
 use bitflags::bitflags;
 use core::ffi::{c_uint, CStr};
-use linux_raw_sys::general::__NR_mount;
 
-use crate::{syscall5_readonly, Result};
+use crate::{syscall5_readonly, Result, Syscall};
 
 bitflags! {
     pub struct MountFlags: c_uint {
@@ -23,7 +22,7 @@ pub fn mount(
     // FIXME
     unsafe {
         syscall5_readonly(
-            __NR_mount as usize,
+            Syscall::MOUNT,
             source,
             target,
             file_system_type,
