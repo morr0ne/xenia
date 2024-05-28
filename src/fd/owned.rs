@@ -149,7 +149,7 @@ impl FromRawFd for OwnedFd {
 impl Drop for OwnedFd {
     #[inline]
     fn drop(&mut self) {
-        unsafe { crate::close(self.fd) }
+        unsafe { crate::close(self.as_raw_fd()) }
     }
 }
 

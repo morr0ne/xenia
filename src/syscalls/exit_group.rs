@@ -6,5 +6,5 @@ use crate::syscall1_noreturn;
 
 #[inline]
 pub fn exit_group(exit_code: c_int) -> ! {
-    unsafe { syscall1_noreturn(__NR_exit_group as usize, exit_code as usize) }
+    unsafe { syscall1_noreturn(__NR_exit_group as usize, exit_code) }
 }

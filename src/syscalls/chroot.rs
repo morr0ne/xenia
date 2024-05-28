@@ -7,7 +7,7 @@ use crate::{syscall1_readonly, Result};
 pub fn chroot(path: &CStr) -> Result<()> {
     // FIXME
     unsafe {
-        syscall1_readonly(__NR_chroot as usize, path.as_ptr() as usize);
+        syscall1_readonly(__NR_chroot as usize, path);
     }
     Ok(())
 }

@@ -15,12 +15,7 @@ bitflags! {
 pub fn mkdir(path: &CStr, mode: Mode) -> Result<()> {
     // FIXME
     unsafe {
-        syscall3_readonly(
-            __NR_mkdirat as usize,
-            AT_FDCWD as usize,
-            path.as_ptr() as usize,
-            mode.bits() as usize,
-        );
+        syscall3_readonly(__NR_mkdirat as usize, AT_FDCWD, path, mode.bits());
     }
 
     Ok(())
